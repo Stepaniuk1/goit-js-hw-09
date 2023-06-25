@@ -27,15 +27,19 @@ formEl.addEventListener(`click`, event => {
   const amount = Number(amountEl.value);
 
   for (let i = 1; i <= amount; i++) {
-    setTimeout(delay => {
-      createPromise(i, delay)
-        .then(msgAccess => {
-          Notify.success(msgAccess);
-        })
-        .catch(msgRejected => {
-          Notify.failure(msgRejected);
-        });
-    }, delay);
+    setTimeout(
+      delay => {
+        createPromise(i, delay)
+          .then(msgAccess => {
+            Notify.success(msgAccess);
+          })
+          .catch(msgRejected => {
+            Notify.failure(msgRejected);
+          });
+      },
+      delay,
+      delay
+    );
     delay += step;
   }
 });

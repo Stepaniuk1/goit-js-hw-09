@@ -4,13 +4,13 @@ import 'flatpickr/dist/flatpickr.min.css';
 
 const inputEl = document.querySelector('#datetime-picker');
 const startBtn = document.querySelector('[data-start]');
-const clearBtn = document.querySelector('[data-clear]');
+// const clearBtn = document.querySelector('[data-clear]');
 const dataDays = document.querySelector('[data-days]');
 const dataHours = document.querySelector('[data-hours]');
 const dataMinutes = document.querySelector('[data-minutes]');
 const dataSeconds = document.querySelector('[data-seconds]');
 
-startBtn.disabled = true;
+// startBtn.disabled = true;
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
@@ -59,6 +59,8 @@ flatpickr(inputEl, options);
 let timerInterval;
 
 function timer() {
+  startBtn.removeEventListener('click', timer);
+
   const selectedDate = new Date(inputEl.value);
 
   timerInterval = setInterval(() => {
